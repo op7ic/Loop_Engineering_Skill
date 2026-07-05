@@ -314,10 +314,3 @@ If you hit the cap without success -> decompose, do not add passes.
 ```
 
 ---
-
-## Theoretical Background
-
-For the research foundations of this framework -- the agent-loop architectures (ReAct,
-Reflexion, Self-Refine, Tree of Thoughts, LATS), the contested evidence on whether LLMs can
-self-correct, the measured diminishing returns of refinement, the documented loop failure
-modes, and how current coding tools implement loops -- see `theory.md`.
