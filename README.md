@@ -320,22 +320,17 @@ does.
 **Make success externally verifiable.** Deterministic criteria (tests passed, exit codes,
 score thresholds) give the loop a reliable stop signal [16]. A goal you cannot verify is a
 goal the loop cannot safely end on.
-
 **Decompose; work one unit at a time.** A single loop rarely one-shots a large system. Split
 into subgoals, each with its own verifier and small loop, and commit after each working
 increment so you can always revert to a passing state [16].
-
 **Ground the loop in external verification over self-critique.** Compilers, tests, linters,
 and type checkers are reliable; the agent's own judgment about its reasoning is not,
 especially on non-verifiable tasks [10,11].
-
 **Keep durable memory.** A markdown spec or progress file the loop re-reads each iteration,
 plus per-increment commits, holds the goal across many iterations and enables recovery after
 a context reset [16].
-
 **Separate the maker from the checker.** A reviewer with fresh context, or a separate
 evaluator model, catches what the writer is blind to.
-
 **Use scripts for deterministic steps.** Mechanical work (formatting, building, running
 tests) does not need a reasoning step; offloading it saves budget and removes a source of
 drift.
@@ -345,20 +340,15 @@ drift.
 **Looping without a verifier.** Iterating on pure self-assessment frequently degrades
 reasoning answers rather than improving them [10]. With no external check, cap at 1-2 passes
 and be honest about the uncertainty.
-
 **Treating the cap as the stop signal.** The cap is a backstop against runaway loops. If
 loops routinely exit by hitting the cap, the goal is not verifiable enough.
-
 **Trusting proxy signals as completion.** A file existing is not the feature working. Tests
 passing is not tests that exercise the new behavior. A clean type check is not meaningful
 types [18].
-
 **Looping harder when stuck.** More iterations on a stalled loop burn budget and accumulate
 noise; a stall is a signal to decompose, not to add passes.
-
 **Batching risky steps per iteration.** Multiple unverified changes in one iteration destroy
 attribution and clean rollback.
-
 **No rollback point.** A long loop with no checkpoints lets one bad iteration poison
 everything after it.
 
@@ -366,13 +356,13 @@ everything after it.
 
 LE adds overhead and is not appropriate for every task.
 
-Do not use LE when: the task is a single deterministic pass with one correct output; the
+**Do not use LE when:** the task is a single deterministic pass with one correct output; the
 work is pure open-ended generation with no notion of "correct" (some creative drafting);
 the process is already governed by an external protocol (a fixed pipeline, a regulatory
 procedure); or latency and budget make even a short loop impractical and a single best-effort
 pass is preferable.
 
-Use LE when: the task takes multiple steps with tool use and environment interaction; an
+**Use LE when:** the task takes multiple steps with tool use and environment interaction; an
 artifact must be improved and a verifier exists; you are seeing runaway loops, doom loops, or
 oscillation; or a project's agentic runs fail in ways that trace back to missing stop signals
 and missing checkpoints.
